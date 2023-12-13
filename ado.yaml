@@ -1,0 +1,18 @@
+- trigger:
+   main
+  
+pool:
+  vmImage: ubuntu-latest
+
+jobs:
+- job: Foo
+  steps:
+  - script: echo1 Hello!
+    condition: always() # this step will always run, even if the pipeline is canceled
+
+- job: Bar
+  dependsOn: Foo
+  condition: failed() # this job will only run if Foo fails
+  steps:
+  -  script: echo Hello world!
+
