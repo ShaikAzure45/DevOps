@@ -1,0 +1,15 @@
+trigger:
+  branches:
+    include:
+      - main
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  - group: randomvariables  # Replace with the name of your variable group
+
+steps:
+- script: echo $(env)  # Replace with the name of your group variable
+  displayName: 'Print Group Variable'
+- script: echo "$(Build.SourceBranchName)"
